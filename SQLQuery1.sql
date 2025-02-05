@@ -1,0 +1,29 @@
+
+
+
+CREATE TABLE AdminUsers (
+    Id INT PRIMARY KEY IDENTITY,
+    Username NVARCHAR(100) UNIQUE NOT NULL,
+    PasswordHash NVARCHAR(255) NOT NULL,
+    TwoFactorSecret NVARCHAR(255) NULL
+);
+
+CREATE TABLE Categories (
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE Products (
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(255) NOT NULL,
+    CategoryId INT NOT NULL,
+    ImageUrl NVARCHAR(500),
+    FOREIGN KEY (CategoryId) REFERENCES Categories(Id) ON DELETE CASCADE
+);
+
+
+
+
+
+
+
